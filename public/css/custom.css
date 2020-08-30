@@ -1,0 +1,15 @@
+.card-king .title {
+    color: #FFF;
+}
+
+.card-king .description1,
+.card-king .description2 {
+    color: #FFF;
+}
+
+.logo-whatsapp, .logo-telegram {
+    display: block;
+    color: #FFF;
+    font-size: 20px;
+    margin-top: 5px;
+}

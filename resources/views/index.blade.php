@@ -14,9 +14,20 @@
 @section('content')
 @php
     $data = \App\King::all();
+    $setting = \App\Setting::find(1);
 @endphp
 <div class="container">
     <div class="row justify-content-center mt-3 mt-md-5">
+        <div class="col-12">
+            <a href="https://api.whatsapp.com/send?phone={{$setting->whatsapp}}&text=Customer" class="logo-whatsapp" title="WhatsApp" target="_blank">
+                <img src="{{asset('/images/whatsapp.png')}}" width="40" alt="">
+                <span>{{$setting->whatsapp}}</span>
+            </a>
+            <a href="https://t.me/{{$setting->telegram}}" class="logo-telegram" title="Telegram" target="_blank">
+                <img src="{{asset('/images/telegram.png')}}" width="40" alt="">
+                <span>{{$setting->telegram}}</span>
+            </a>
+        </div>
         <div class="col-12">
             <div class="clearfix">
                 @auth                    
@@ -24,7 +35,7 @@
                 @endauth
             </div>
             @foreach ($data as $item)
-                <div class="card card-body card-king mt-2">
+                <div class="card-king mt-2">
                     <h4 class="clearfix text-center">
                         <span class="title">{{$item->title}}</span>
                         @auth
@@ -212,7 +223,7 @@
             });
             $(".btn-edit").click(function () {
                 let id = $(this).data('id');
-                let item = $(this).parents('.card');
+                let item = $(this).parents('.card-king');
                 let title = item.find('.title').text();
                 let description1 = item.find('.description1').text();
                 let description2 = item.find('.description2').text();
