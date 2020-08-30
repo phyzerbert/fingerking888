@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\King;
+use App\Setting;
 
 use Auth;
 
@@ -106,5 +107,15 @@ class HomeController extends Controller
     public function king_delete($id) {
         King::destroy($id);
         return back()->with('success', 'Deleted Successfully');
+    }
+
+    public function setting_update(Request $request) {
+        $setting = Setting::find(1);
+        $setting->update([
+            'whatsapp' => $request->get('whatsapp'),
+            'telegram' => $request->get('telegram'),
+        ]);
+
+        return back()->with('success'. 'Updated Successfully');
     }
 }

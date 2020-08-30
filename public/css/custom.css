@@ -13,3 +13,9 @@
     font-size: 20px;
     margin-top: 5px;
 }
+
+.btn-setting-edit {
+    position: absolute;
+    right: 13px;
+    top: 7px;
+}

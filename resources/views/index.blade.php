@@ -18,7 +18,7 @@
 @endphp
 <div class="container">
     <div class="row justify-content-center mt-3 mt-md-5">
-        <div class="col-12">
+        <div class="col-12" style="position: relative">
             <a href="https://api.whatsapp.com/send?phone={{$setting->whatsapp}}&text=Customer" class="logo-whatsapp" title="WhatsApp" target="_blank">
                 <img src="{{asset('/images/whatsapp.png')}}" width="40" alt="">
                 <span>{{$setting->whatsapp}}</span>
@@ -27,6 +27,11 @@
                 <img src="{{asset('/images/telegram.png')}}" width="40" alt="">
                 <span>{{$setting->telegram}}</span>
             </a>
+            @auth
+                <a href="javascript:;" data-toggle="modal" data-target="#settingModal" class="btn-setting-edit">
+                    <img src="/images/edit.png" width="30">
+                </a>
+            @endauth
         </div>
         <div class="col-12">
             <div class="clearfix">
@@ -202,6 +207,34 @@
                             <textarea name="description2" rows="2" class="form-control description2"></textarea>
                         </div>
                         
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-danger ml-2" data-dismiss="modal">Close</button>
+                    </div>                
+                </form>          
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="settingModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Setting</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <form action="{{route('setting.update')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Whatsapp</label>
+                            <input type="text" class="form-control whatsapp" name="whatsapp" value="{{$setting->whatsapp}}" required />
+                        </div>  
+                        <div class="form-group">
+                            <label for="">Telegram</label>
+                            <input type="text" class="form-control telegram" name="telegram" value="{{$setting->telegram}}" required />
+                        </div>                       
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save</button>

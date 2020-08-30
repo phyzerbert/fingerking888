@@ -24,3 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/king/save', 'HomeController@king_save')->name('king.save');
 Route::post('/king/update', 'HomeController@king_update')->name('king.update');
 Route::get('/king/delete/{id}', 'HomeController@king_delete')->name('king.delete');
+
+Route::post('/setting/update', 'HomeController@setting_update')->name('setting.update');
