@@ -67,6 +67,11 @@ class HomeController extends Controller
         return back()->with('success', 'Uploaded Successfully');
     }
 
+    public function king_edit($id) {
+        $king = King::find($id);
+        return view('king.edit', compact('king'));
+    }
+
     public function king_update(Request $request) {
         $item = King::find($request->get('id'));
         $item->title = $request->get('title');

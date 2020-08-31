@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/admin', 'HomeController@index')->name('home');
 Route::post('/king/save', 'HomeController@king_save')->name('king.save');
+Route::get('/king/edit/{id}', 'HomeController@king_edit')->name('king.edit');
 Route::post('/king/update', 'HomeController@king_update')->name('king.update');
 Route::get('/king/delete/{id}', 'HomeController@king_delete')->name('king.delete');
 

@@ -15,7 +15,7 @@ class CreateKingsTable extends Migration
     {
         Schema::create('kings', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->text('title')->nullable();
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
             $table->text('description1')->nullable();
