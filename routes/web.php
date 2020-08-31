@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
 Route::post('/king/save', 'HomeController@king_save')->name('king.save');
 Route::post('/king/update', 'HomeController@king_update')->name('king.update');
 Route::get('/king/delete/{id}', 'HomeController@king_delete')->name('king.delete');

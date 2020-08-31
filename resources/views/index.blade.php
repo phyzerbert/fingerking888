@@ -15,6 +15,7 @@
 @php
     $data = \App\King::all();
     $setting = \App\Setting::find(1);
+    $route_name = Route::currentRouteName();
 @endphp
 <div class="container">
     <div class="row justify-content-center mt-3 mt-md-5">
@@ -27,25 +28,25 @@
                 <img src="{{asset('/images/telegram.png')}}" width="40" alt="">
                 <span>{{$setting->telegram}}</span>
             </a>
-            @auth
+            @if($route_name == 'home')
                 <a href="javascript:;" data-toggle="modal" data-target="#settingModal" class="btn-setting-edit">
                     <img src="/images/edit.png" width="30">
                 </a>
-            @endauth
+            @endif
         </div>
         <div class="col-12">
             <div class="clearfix">
-                @auth                    
+                @if($route_name == 'home')
                     <a href="javascript:;" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#addModal">Add New</a>
-                @endauth
+                @endif
             </div>
             @foreach ($data as $item)
                 <div class="card-king mt-2">
                     <h4 class="clearfix text-center">
                         <span class="title">{{$item->title}}</span>
-                        @auth
+                        @if($route_name == 'home')
                             <a href="javascript:;" class="btn btn-sm btn-info btn-edit float-right" data-id="{{$item->id}}">Edit</a>
-                        @endauth
+                        @endif
                     </h4>
                     <div class="row">
                         <div class="col-md-6">
@@ -93,7 +94,7 @@
     </div>
 </div>
 
-@auth    
+@if($route_name == 'home') 
     <div class="modal fade" id="addModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -244,7 +245,7 @@
             </div>
         </div>
     </div>
-@endauth
+@endif
 @endsection
 
 @section('script')
